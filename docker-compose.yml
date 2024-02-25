@@ -15,7 +15,7 @@ services:
     cap_add:
       - NET_ADMIN
     volumes:
-      - "./serverDHCP/dhcpd.leases:/var/lib/dhcp/dhcpd.leases"
+      # - "./serverDHCP/dhcpd.leases:/var/lib/dhcp/dhcpd.leases"
       - "./serverDHCP/dhcpd.conf:/etc/dhcp/dhcpd.conf"
       - "./serverDHCP/dhcpd6.conf:/etc/dhcp/dhcpd6.conf"
     # Map container build context to DHCPserver container:

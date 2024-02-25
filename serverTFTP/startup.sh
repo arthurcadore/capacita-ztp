@@ -14,7 +14,7 @@ in.tftpd -l -s /tftpshare -a 0.0.0.0:69 &
 ps aux
 
 # Verify the status of the TFTP port:
-ss -lnu
+netstat -lnu
 
 # Keep the container running
 tail -f /dev/null
