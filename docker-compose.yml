@@ -10,7 +10,8 @@ services:
     container_name: dhcpserver
     hostname: dhcpserver
     restart: always
-    # volumes:
+    volumes:
+      - "./serverDHCP/dhcpd.leases:/var/lib/dhcp/dhcpd.leases"
     #  - "./serverDHCP/dhcpd.conf:/etc/dhcp/dhcpd.conf"
     # Capabilities to add to the container to allow DHCP server to run:
     cap_add:
