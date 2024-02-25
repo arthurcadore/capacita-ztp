@@ -12,7 +12,11 @@ RUN apk add --no-cache tftp-hpa
 # Create a directory to store the files:
 RUN mkdir -p /tftpshare
 
-# Start the TFTP server and keep it running sharing the directory tftpshare. 
+# Copy the configuration file to the container:
+COPY serverTFTP/startup.sh /usr/local/bin/startup.sh
 
-# The TFTP is listening on port 69 of any interface
-CMD ["/etc/in.tftpd", "-l", "-s", "/tftpshare", "-a", "0.0.0.0:69"]
+# Set the file as executable:
+RUN chmod +x /usr/local/bin/startup.sh
+
+# Start the TFTP server and keep it running:
+CMD ["/usr/local/bin/startup.sh"]
