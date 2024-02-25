@@ -8,10 +8,10 @@
 touch /var/lib/dhcp/dhcpd.leases
 
 # change user of /var/lib/dhcp/dhcpd.leases to root
-sudo chown root:root /var/lib/dhcp/dhcpd.leases
+chown root:root /var/lib/dhcp/dhcpd.leases
 
 # give permissions to the file read and write: 
-sudo chmod 666 /var/lib/dhcp/dhcpd.leases
+chmod 666 /var/lib/dhcp/dhcpd.leases
 
 # start the DHCP server
 dhcpd -d --no-pid
