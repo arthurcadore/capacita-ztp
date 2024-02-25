@@ -12,9 +12,7 @@ RUN apk add --no-cache tftp-hpa
 # Create a directory to store the files:
 RUN mkdir -p /tftpshare
 
-# Set the directory as the working directory:
-WORKDIR /tftpshare
-
 # Start the TFTP server and keep it running sharing the directory tftpshare. 
+
 # The TFTP is listening on port 69 of any interface
-CMD ["in.tftpd", "-l", "-s", "/tftpshare", "-a", "0.0.0.0:69"]
+CMD ["/etc/in.tftpd", "-l", "-s", "/tftpshare", "-a", "0.0.0.0:69"]
