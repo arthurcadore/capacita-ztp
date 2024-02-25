@@ -10,17 +10,14 @@ services:
     container_name: dhcpserver
     hostname: dhcpserver
     restart: always
+    network_mode: "host"
+    # Capabilities to add to the container to allow DHCP server to run:
+    cap_add:
+      - NET_ADMIN
     volumes:
       - "./serverDHCP/dhcpd.leases:/var/lib/dhcp/dhcpd.leases"
       - "./serverDHCP/dhcpd.conf:/etc/dhcp/dhcpd.conf"
       - "./serverDHCP/dhcpd6.conf:/etc/dhcp/dhcpd6.conf"
-    # Capabilities to add to the container to allow DHCP server to run:
-    cap_add:
-      - NET_ADMIN
-    # Expose DHCP server ports:
-    ports:
-      - "67:67/udp"
-      - "68:68/udp"
     # Map container build context to DHCPserver container:
     build:
       context: .
@@ -31,12 +28,10 @@ services:
     container_name: tftpserver
     hostname: tftpserver
     restart: always
+    network_mode: "host"
     # Volume mount to share TFTP files:
     volumes:
       - "./config:/tftpshare"
-    # Expose TFTP server port:
-    ports:
-      - "69:69/udp"
     # Map container build context to TFTPserver container:
     build:
       context: .
