@@ -10,5 +10,11 @@
 # Start the TFTP server
 in.tftpd -l -s /tftpshare -a 0.0.0.0:69 &
 
+# Verify the status of the TFTP server:
+ps aux
+
+# Verify the status of the TFTP port:
+ss -lnu
+
 # Keep the container running
 tail -f /dev/null
