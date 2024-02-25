@@ -6,11 +6,13 @@
 # Use networkboot DHCP image as base:
 FROM networkboot/dhcpd:1.3.0
 
-# create /var/lib/dhcp/leases file:
-RUN touch /var/lib/dhcp/dhcpd.leases
+# Copy the configuration file to the container:
+COPY serverDHCP/startup.sh /usr/local/bin/startup.sh
 
-# keep the container running:
-CMD ["dhcpd", "-d", "--no-pid"]
+# Set the file as executable:
+RUN chmod +x /usr/local/bin/startup.sh
 
+# Start the DHCP server and keep it running:
+CMD ["/usr/local/bin/startup.sh"]
 
 
