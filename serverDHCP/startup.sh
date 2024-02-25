@@ -11,7 +11,7 @@ touch /var/lib/dhcp/dhcpd.leases
 chown root:root /var/lib/dhcp/dhcpd.leases
 
 # give permissions to the file read and write: 
-chmod 666 /var/lib/dhcp/dhcpd.leases
+chmod 664 /var/lib/dhcp/dhcpd.leases
 
 # start the DHCP server
 dhcpd -d --no-pid
