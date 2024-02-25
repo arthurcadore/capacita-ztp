@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/ash
 # Author: Arthur Cadore M. Barcella
 # Github: arthurcadore
 
@@ -7,4 +7,8 @@
 # Start the TFTP server and keep it running sharing the directory tftpshare.
 # The TFTP is listening on port 69 of any interface
 
-in.tftpd -l -s /tftpshare -a 0.0.0.0:69
+# Start the TFTP server
+in.tftpd -l -s /tftpshare -a 0.0.0.0:69 &
+
+# Keep the container running
+tail -f /dev/null
