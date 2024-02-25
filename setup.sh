@@ -1,18 +1,19 @@
 #!/bin/bash
 
-read -p "Deseja inicializar (true) ou desativar (false) o appliance ZTP?" opcao
+read -p "Escolha se deseja inicializar (true) ou desativar (false) o appliance ZTP: " opcao
 
 if [[ "$opcao" == "true" ]]; then
     echo "Realizando o build do appliance ZTP..."
     docker-compose build
+    sleep 10
     echo "Desabilitando o DHCP nativo..."
      sudo systemctl stop systemd-networkd.socket
      sudo systemctl stop systemd-networkd
     echo "Verificando status dos serviços:"
-     systemctl status systemd-networkd.socket
-     systemctl status systemd-networkd
+     sudo systemctl status systemd-networkd.socket
+     sudo systemctl status systemd-networkd
     echo "verificando status das portas:"
-     ss -lnu 
+     sudo ss -lnu 
     echo "Iniciando o appliance ZTP..."
     docker compose up & 
 elif [[ "$opcao" == "false" ]]; then
@@ -20,13 +21,14 @@ elif [[ "$opcao" == "false" ]]; then
     docker compose down
 
     echo "Habilitando o DHCP nativo..."
-     systemctl start systemd-networkd.socket
-     systemctl start systemd-networkd
+     sudo systemctl start systemd-networkd.socket
+     sudo systemctl start systemd-networkd
 
     echo "Verificando status dos serviços:"
-     systemctl status systemd-networkd.socket
-     systemctl status systemd-networkd
-     ss -lnu 
+     sudo systemctl status systemd-networkd.socket
+     sudo systemctl status systemd-networkd
+     sudo netplan apply
+     sudo ss -lnu 
 else
     echo "Opção inválida. Use 'true' para habilitar ou 'false' para desabilitar o appliance ZTP."
 fi
