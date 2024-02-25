@@ -4,7 +4,7 @@ read -p "Escolha se deseja inicializar (true) ou desativar (false) o appliance Z
 
 if [[ "$opcao" == "true" ]]; then
     echo "Realizando o build do appliance ZTP..."
-    docker-compose build
+    docker compose build
     sleep 10
     echo "Desabilitando o DHCP nativo..."
      sudo systemctl stop systemd-networkd.socket
