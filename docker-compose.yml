@@ -12,7 +12,8 @@ services:
     restart: always
     volumes:
       - "./serverDHCP/dhcpd.leases:/var/lib/dhcp/dhcpd.leases"
-    #  - "./serverDHCP/dhcpd.conf:/etc/dhcp/dhcpd.conf"
+      - "./serverDHCP/dhcpd.conf:/etc/dhcp/dhcpd.conf"
+      - "./serverDHCP/dhcpd6.conf:/etc/dhcp/dhcpd6.conf"
     # Capabilities to add to the container to allow DHCP server to run:
     cap_add:
       - NET_ADMIN
