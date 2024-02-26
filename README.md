@@ -35,9 +35,9 @@ If you don't have Docker (and Docker-compose) installed on your system yet, it c
 
 ### Application (DHCP/TFTP) Server Configuration:
 
-First configure DHCP server files, you can do this by edditing the `.cfg` files in `/serverDHCP/` directory: 
+First configure DHCP server files, you can do this by edditing the `.cfg` files in `/serverDHCP/` directory.
 
-The configuration for `dhcpd.cfg` file by default is: 
+The configuration for `dhcpd.cfg` file by default is displayed below, this configuration is used for DHCP server operation in IPv4. 
 ```
 option domain-name "capacitacao.intelbras.com.br";
 option domain-name-servers 10.1.40.240;
