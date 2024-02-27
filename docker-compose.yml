@@ -36,3 +36,18 @@ services:
     build:
       context: .
       dockerfile: ./serverTFTP/Dockerfile
+
+  dnsserver:
+    container_name: dnsserver
+    restart: always
+    network_mode: "host"
+    environment:
+      - BIND9_USER=root
+      - TZ=America/Sao_Paulo
+    volumes:
+      - ./serverDNS/named.conf.local:/etc/bind/named.conf.local
+      - ./serverDNS/named.conf.options:/etc/bind/named.conf.options
+      - ./serverDNS/db.capacitacao:/etc/bind/db.capacitacao
+    build:
+      context: .
+      dockerfile: ./serverDNS/Dockerfile

@@ -1,0 +1,22 @@
+options {
+
+        // Directory to store DNS cache resolv
+        directory "/var/cache/bind";
+
+        // Specify below the IP addresses for DNS Servers to Follow.
+        // Once the name to resolves not be stored in the local server, it will be asked to forwaders servers.
+        forwarders {
+              8.8.8.8;
+              8.8.4.4;
+        };
+
+        // DNSsec validadion option:
+        dnssec-validation auto;
+
+        // Configuration to specify who can ask to the server:
+        allow-query { any; };
+        allow-query-cache { any; };
+
+        // Configuation to specify compatibility with IPv6 (AAAA) name resolution
+        listen-on-v6 { any; };
+};
