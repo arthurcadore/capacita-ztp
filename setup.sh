@@ -9,9 +9,12 @@ if [[ "$opcao" == "true" ]]; then
     echo "Desabilitando o DHCP nativo..."
      sudo systemctl stop systemd-networkd.socket
      sudo systemctl stop systemd-networkd
+    echo "Desabilitando o DNS nativo..."
+     sudo systemctl stop systemd-resolved
     echo "Verificando status dos serviços:"
      sudo systemctl status systemd-networkd.socket
      sudo systemctl status systemd-networkd
+     sudo systemctl status systemd-resolved
     echo "verificando status das portas:"
      sudo ss -lnu 
     echo "Iniciando o appliance ZTP..."
@@ -24,9 +27,13 @@ elif [[ "$opcao" == "false" ]]; then
      sudo systemctl start systemd-networkd.socket
      sudo systemctl start systemd-networkd
 
+    echo "Habilitando o DNS nativo..."
+     sudo systemctl start systemd-resolved
+
     echo "Verificando status dos serviços:"
      sudo systemctl status systemd-networkd.socket
      sudo systemctl status systemd-networkd
+     sudo systemctl status systemd-resolved
      sudo netplan apply
      sudo ss -lnu 
 else
