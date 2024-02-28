@@ -108,6 +108,7 @@ To exit from container's command line interface, use the command `exit`.
 Once the containers have started and the device has connected to the same LAN as the application servers, the ZTP client will receive the DHCP parameters and download the file from the TFTP server.
 
 The topology for the ZTP appliance is depicted below:
+
 [![ZTP Appliance Topology](./pictures/ztp-topology.png)](./pictures/ztp-topology.png)
 
 After receiving the DHCP parameters, the ZTP client will download the file from the TFTP server. Subsequently, the device will be provisioned with the configurations from the file, as shown below:
